@@ -1,0 +1,487 @@
+
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* 💥 CSS 파일 안의 예전 .animal-list 내용을 지우고 이걸로 덮어쓰세요 */
+.animal-list {
+  display: flex;             /* 가로 정렬 */
+  justify-content: center;   /* 가운데 정렬 */
+  align-items: center;       /* 세로축 기준 가운데 정렬 */
+  gap: 16px;                 /* 이미지 사이의 간격 */
+  margin-top: 32px;          /* 위쪽 여백은 그대로 유지 */
+  margin-inline: auto;       /* 좌우 가운데 정렬 유지 */
+  margin-bottom: 0px;       /* 위아래 여백 */
+  width: 100%;               
+  max-width: 800px;          
+  box-sizing: border-box;
+  flex-wrap: nowrap;         /* 💥 절대 아래 줄로 떨어지지 않도록 고정 */
+}
+
+/* 기본 동물 이미지 스타일 규칙에 마우스 포인터 추가 */
+.animal-item {
+  width: 70px;               
+  height: 70px;              
+  object-fit: contain;       
+  flex-shrink: 1;            
+  cursor: pointer;            /* 💥 마우스를 올리면 누를 수 있는 버튼 모양으로 변경 */
+  transition: transform 0.2s; 
+}
+
+.animal-item:hover {
+  transform: scale(1.1);
+}
+
+/* 💥 클릭했을 때 0.5초 동안 작동할 귀여운 바운스 애니메이션 */
+.bounce-motion {
+  animation: bounceKeyframe 0.5s ease-in-out;
+}
+
+/* 통통 튀는 움직임의 세부 좌표 정의 */
+@keyframes bounceKeyframe {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-20px) scale(1.05); /* 위로 튀어오르며 살짝 커짐 */
+  }
+  50% {
+    transform: translateY(0) scale(0.95);    /* 바닥에 닿으며 살짝 찌그러짐 */
+  }
+  70% {
+    transform: translateY(-8px) scale(1.02);  /* 가볍게 한 번 더 튐 */
+  }
+}
+
+/* 💥 직사각형 카드를 가로로 나열하는 스타일 */
+.animal-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+  flex-wrap: nowrap; /* 한 줄로 강제 고정 */
+}
+
+/* 개별 카드 기본 디자인 (세로형 직사각형) */
+.animal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110px;         /* 가로를 짧게 */
+  height: 150px;        /* 세로를 길게 해서 직사각형 컴팩트 카드 형태 제공 */
+  border-radius: 16px;  /* 모서리를 둥글고 귀엽게 */
+  padding: 12px;
+  box-sizing: border-box;
+  text-decoration: none; /* 밑줄 방지 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* 마우스 호버 효과 */
+.animal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.card-emoji {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.card-title {
+  font-family: "Bagel Fat One", sans-serif;
+  font-size: 1rem;
+  color: #333333;
+  margin-bottom: 12px;
+}
+
+/* 미니 가짜 버튼 디자인 */
+.card-btn-mock {
+  background-color: #ffffff;
+  color: #4a4a4a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 4px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.animal-card:hover .card-btn-mock {
+  background-color: #f5f5f5;
+}
+
+/* 🎨 각 동물 카드별 귀여운 파스텔톤 배경색 */
+.dog-card { background-color: #FFF2E2; }
+.cat-card { background-color: #E2F5FF; }
+.rabbit-card { background-color: #FFE5EC; }
+.bear-card { background-color: #E8F5E9; }
+
+/* 기존 리스트 스타일 제거 (기존 ul, li 형태가 깨지는 것 방지) */
+#docs ul {
+  display: none;
+}
+
+/* 💥 하단 두 섹션(#docs와 #social)을 세로로 나열하도록 강제 정렬 */
+#next-steps {
+  display: flex;
+  flex-direction: column; /* 세로 정렬 */
+  gap: 40px;              /* 섹션 간 상하 간격 */
+  width: 100%;
+  max-width: 800px;       /* 중앙 박스 너비 조절 */
+  margin: 0 auto;
+}
+
+/* 각각의 섹션 너비를 100%로 가득 채우고 테두리 스타일 정리 */
+#docs, #social {
+  width: 100% !important;
+  box-sizing: border-box;
+  padding: 24px;
+}
+
+/* 💥 새로 만든 나무위키 입력창 폼 정렬 */
+.wiki-search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* 입력칸(Input) 디자인 */
+.wiki-search-input {
+  width: 280px;
+  padding: 10px 16px;
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.wiki-search-input:focus {
+  border-color: #6496FF; /* 포커스 시 테두리 색상 */
+}
+
+/* 검색 버튼 디자인 */
+.wiki-search-btn {
+  background-color: #6496FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s;
+}
+
+.wiki-search-btn:hover {
+  background-color: #4b80eb;
+}
+
+/* 💥 투표 섹션을 감싸는 귀여운 투표 박스 */
+.vote-box {
+  background-color: #ffffff;
+  border: 3px dashed #ffd3e2; /* 둥글둥글한 느낌을 주는 점선 테두리 */
+  border-radius: 24px;
+  padding: 30px 24px 24px 24px;
+  margin: 30px auto;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.15);
+}
+
+/* '막간 투표!' 미니 배지 */
+.vote-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffd3e2;
+  color: #ff6b8b;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* 투표 현황 텍스트 */
+.count-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.15rem;
+  color: #4a4a4a;
+  margin-bottom: 16px;
+}
+
+.count-text strong {
+  font-size: 1.4rem;
+  color: #ff6b8b;
+  margin-left: 4px;
+  display: inline-block;
+  /* 숫자가 올라갈 때 순간적으로 커지는 효과 */
+  animation: popNumber 0.3s ease-out; 
+}
+
+.vs-text {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-weight: bold;
+}
+
+/* 💥 실시간 변동 게이지 바 트랙 (배경) */
+.gauge-container {
+  display: flex;
+  width: 100%;
+  height: 24px;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  overflow: hidden; /* 테두리 밖으로 삐져나가는 게이지 컷팅 */
+  margin-bottom: 24px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+}
+
+/* 각 게이지 칸 스타일 (스르륵 늘어나는 transition 효과 포함) */
+.gauge-bar {
+  height: 100%;
+  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 살짝 튕기듯 부드럽게 늘어남 */
+}
+
+.dog-bar {
+  background-color: #ffdfba; /* 강아지 테마: 연한 주황/베이지 */
+}
+
+.cat-bar {
+  background-color: #baffc9; /* 고양이 테마: 연한 민트/그린 */
+}
+
+/* 투표 버튼들 기본 정렬 */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* 투표하기 전용 귀여운 버튼 디자인 */
+.vote-btn {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.1s;
+}
+
+.vote-btn:active {
+  transform: scale(0.95); /* 클릭할 때 꾹 눌리는 느낌 */
+}
+
+.dog-btn { background-color: #ffe9d0; color: #d48324; }
+.cat-btn { background-color: #dbffd6; color: #2e8b57; }
+
+.reset-btn {
+  background-color: #f5f5f5;
+  color: #999;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+}
+.reset-btn:hover { background-color: #e0e0e0; }
+
+/* 숫자가 바뀔 때 뿅 하고 커지는 애니메이션 효과 */
+@keyframes popNumber {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
